@@ -72,7 +72,7 @@ ibuzz = db['instagram_buzz']
 
 location = []
 
-for value in ibuzz:
+for value in ibuzz.find():
 	locations.append(value['id'])
 
 user_media_db = db['user_media']
