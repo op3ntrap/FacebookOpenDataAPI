@@ -70,13 +70,13 @@ client = MongoClient()
 db = client.db
 ibuzz = db['instagram_buzz']
 
-location = []
+locationsdata = []
 
 for value in ibuzz.find():
-	locations.append(value['id'])
+	locationsdata.append(value['id'])
 
 user_media_db = db['user_media']
-for location in locations:
+for location in locationsdata:
 	media_in_location = get_location_buzz(location)
 	for media in media_in_location:
 		if (user_existence(media['user']['id'])):
