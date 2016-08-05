@@ -11,44 +11,44 @@ def get_user_recent_media(id):
 	user_id.append(id)
 	dump = requests.get("https://api.instagram.com/v1/user/media/recent"+id+"?access_token=3407738697.e029fea.8659525c7ca248f3b3fd6eb1130771e1")
 	images_list = []
-
+	
 	i=2
-    try:
-        images = requests.get("https://api.instagram.com/v1/user/media/recent"+id+"?access_token=3407738697.e029fea.8659525c7ca248f3b3fd6eb1130771e1")
-        data = images.json()
-        for values in data['data']:
-            images_list.append(values)
-    except KeyError:
-        return images_list
+    	try:
+	        images = requests.get("https://api.instagram.com/v1/user/media/recent"+id+"?access_token=3407738697.e029fea.8659525c7ca248f3b3fd6eb1130771e1")
+	        data = images.json()
+	        for values in data['data']:
+	            images_list.append(values)
+    	except KeyError:
+        	return images_list
     #############################################################
-    while(i<5):
+    	while(i<5):
        
-        try:
-            images = requests.get(data['pagination']['next_url'])
-            
-            time.sleep(7)
-        
-            data = images.json()
-            #print data['pagination']['next_url']
-        except KeyError:
-            return images_list
-       
-        if (len(data['data']) == 0):
-            break
-        
-        for values in data['data']:
-            images_list.append(values)
-        #print len(images_list)
+	        try:
+	            images = requests.get(data['pagination']['next_url'])
+	            
+	            time.sleep(7)
+	        
+	            data = images.json()
+	            #print data['pagination']['next_url']
+	        except KeyError:
+	            return images_list
+	       
+	        if (len(data['data']) == 0):
+	            break
+	        
+	        for values in data['data']:
+	            images_list.append(values)
+	        #print len(images_list)
     ##############################################################
-    entry = {
-	"_id" : id,
-	"recent_media" : images_list
-	}
+		entry = {
+		"_id" : id,
+		"recent_media" : images_list
+		}
+		
+		
+		
+		return entry
 
-
-
-    return entry
-    
 
 
 def user_existence(id):
