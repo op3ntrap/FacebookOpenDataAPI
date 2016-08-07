@@ -94,6 +94,10 @@ for users in user_media_db.find():
 for location in locationids:
     media_in_location = get_location_buzz(location)
     for media in media_in_location:
+    	usr = media['user']['id']
+    	if (usr in user_id):
+    		print "continuing"
+    		continue
         
         
         user_media = get_user_recent_media(media['user']['id'])
