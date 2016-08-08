@@ -169,6 +169,6 @@ def run1(pageid):
         break
 
 for a in MongoClient().db.fb_locations.find():
-	thread.start_new_thread(run1,(a,))
+	thread.start_new_thread(run1,(a['page_node'],))
 	time.sleep(900)
 	
