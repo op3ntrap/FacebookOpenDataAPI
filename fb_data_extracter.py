@@ -41,7 +41,7 @@ def feed_request(pageid,until,since):
 def get_page_daily_feed(pageid):
 	page_feed = []
 	current_time = time.time()
-	time_constant = 86400
+	time_constant = 259200
 	current_time = int(time.time())
 	while (current_time>0):
 		try:
