@@ -32,8 +32,3 @@ class project_db:
                     break
 
         print "Database Authentication Successful"
-from pymongo import MongoClient as tree
-db = project_db("db",tree)
-
-from pymongo import MongoClient as man
-ddb = project_db("admin",tree)
