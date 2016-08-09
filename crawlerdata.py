@@ -2,7 +2,7 @@ from pymongo import MongoClient as MongoClient1
 
 host = '104.197.108.172'
 client = MongoClient1(host)
-user_name= raw_input("username :")
+user_name= raw_input("username : ")
 password = raw_input("password :")
 client.db.authenticate(user_name,password,mechanism='SCRAM-SHA-1')
 
