@@ -27,6 +27,7 @@ class project_db:
                     except OperationFailure:
                         continue
                     break
+
                 else:
                     break
 
