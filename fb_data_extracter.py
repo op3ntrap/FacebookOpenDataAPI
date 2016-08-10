@@ -7,7 +7,7 @@ import Queue
 from thread import start_new_thread
 
 # database initialization
-access_token = "EAACNrjHuFp0BAPdpmSRZAB7BgvU3Khjzf0YPZBZChfOZC8XOHHpeHckXof6NzbJL1VO0hWL55ZAF53SdKBUxazakzbWWSHzZBBnbEpsW6ZA4PWmfeFU8ikJjL4ZCKZBuSgAz6CrggagkXPhV2tebLUZBimtLSwUCJ4bfYZD"
+access_token = "EAACNrjHuFp0BAHJE4Nscd2gZCSu8CMMzmnlraqlcukZAEvQx6QIZCY8WYNylsm3ZAZCbl7Ms05eUoZAKzdEHZAT49DeQl2xDlR1DZALfujBXtRo27wywZAj664kb5ecOuia2uAJHcBKd7HMzdSQnuEjT1yxfHZADivCZCEZD"
 
 
 def paginator(next_url, queb):
@@ -148,6 +148,8 @@ def run():
         break
 
 '''
+
+
 def run1(pageid):
     db = MongoClient ().db.fb_locations
     feed_db = MongoClient ().db.page_feed
@@ -164,12 +166,14 @@ def run1(pageid):
         break
 
 
-
-
 if __name__ == '__main__':
     import thread
-    locations = {}
-    for a in MongoClient ().db.fb_locations.find():
-        t = Thread(run1,(a,))
-        t.start()
-        t.join()
+
+    locations = []
+    for a in MongoClient ().db.fb_locations.find ():
+        locations.append (a['page_node'])
+
+    for a in locations:
+        t = Thread (run1, (a,))
+        t.start ()
+        t.join ()
