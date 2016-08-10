@@ -174,6 +174,9 @@ if __name__ == '__main__':
         locations.append (a['page_node'])
 
     for a in locations:
-        t = Thread (run1, (a,))
+        done = ["levelshkv", "KittySu.Delhi","MoonshineCafeBar"]
+        if a in done:
+            continue
+        t = Thread (target=run1, args=(a,))
         t.start ()
         t.join ()
