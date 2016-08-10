@@ -169,6 +169,7 @@ def run1(pageid):
 if __name__ == '__main__':
     import thread
     locations = {}
-    for a in MongoClient ().db.fb_locations.find ():
-        thread.start_new_thread (run1,(a,))
-        time.sleep (900)
+    for a in MongoClient ().db.fb_locations.find():
+        t = Thread(run1,(a,))
+        t.start()
+        t.join()
