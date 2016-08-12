@@ -1,16 +1,35 @@
 from pymongo import MongoClient
+def somemethod():
+    db = MongoClient ().db.user_media
+    crsr = db.find ()
 
-db = MongoClient ().db.user_media
-crsr = db.find ()
+    count = 0
+    c = 0
 
-count = 0
-c = 0
+    for a in crsr:
+        try:
+            c += 1
+            count += len (a['user_media'])
+        except KeyError:
+            continue
+    print "doc", c
+    print "er", count
 
-for a in crsr:
-    try:
-        c += 1
-        count += len (a['user_media'])
-    except KeyError:
-        continue
-print "doc", c
-print "er", count
+def get_feed_count(value):
+    db = MongoClient().db.page_feed
+    if value == "all":
+        token = []
+        token_value = []
+        count = 0
+        for a in db.find():
+            if a['pageid'] not in token:
+                token.append(a['pageid'])
+                token_value [token.index(a['pageid'])] = 0
+            else:
+                try:
+                    token_value[token.index(a['pageid'])] += len(a['feed'][0])
+                except IndexError:
+                    continue
+        i = 0
+        for a in token:
+            print a , token_value[i]
