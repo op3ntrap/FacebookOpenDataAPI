@@ -33,3 +33,10 @@ def get_feed_count(value):
         i = 0
         for a in token:
             print a , token_value[i]
+            i+=1
+        total_count= 0
+        for a in token_value:
+            total_count+=a
+        print "total_feed",total_count
+
+
