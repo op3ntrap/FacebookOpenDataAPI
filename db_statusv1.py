@@ -24,7 +24,7 @@ def get_feed_count(value):
         for a in db.find():
             if a['pageid'] not in token:
                 token.append(a['pageid'])
-                token_value [token.index(a['pageid'])] = 0
+                token_value.append(count)
             else:
                 try:
                     token_value[token.index(a['pageid'])] += len(a['feed'][0])
