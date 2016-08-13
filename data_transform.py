@@ -13,5 +13,5 @@ def dispose(array_r,page_id):
 
 
 
-for a in client.db:
+for a in client.db.page_feed.find():
     dispose (a['feed'], a['pageid'])
